@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuri Kubota | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="fade">
+  <header>
+    <h1><a href="index.html" class="en">Yuri Kubota</a></h1>
+    <nav>
+      <a href="index.html" class="en">Top</a>
+      <a href="about.html" class="en">About</a>
+      <a href="works.html" class="en">Works</a>
+      <a href="index.html#contact" class="en">Contact</a>
+    </nav>
+  </header>
+<section id="works">
+  <div class="title-wrapper">
+    <h1 class="title en">W<span class="highlight">o</span>rks</h1>
+    <div class="underline"></div>
+  </div>
+  <div class="works">
+
+  <div class="work-item">
+   <img src="images/meishi.jpg" alt="自分の名刺">
+   <div class="work-text">
+   <h4>自分の名刺</h4>
+   <p class="en">Canva</p>
+   <a href="works/meishi.html" class="btn en">View More</a>
+  </div>
+  </div>
+
+
+   <div class="work-item">
+   <img src="images/Komorebi.avif" alt="Komorebi">
+   <div class="work-text">
+   <h4 class="en">LP</h4>
+   <p class="en">Wordpress</p>
+   <a href="works/komorebi.html" class="btn en">View More</a>
+  </div>
+  </div>
+
+     <div class="work-item">
+   <img src="images/Natural Grlow.avif" alt="Natural-Glow">
+   <div class="work-text">
+   <h4 class="en">LP</h4>
+   <p class="en">Wordpress</p>
+   <a href="works/natural.html" class="btn en">View More</a>
+  </div>
+  </div>
+  
+
+   <div class="work-item">
+   <img src="images/tabi.avif" alt="旅のしおり">
+   <div class="work-text">
+   <h4>旅のしおり</h4>
+   <p class="en">Word Press / Figma</p>
+   <a href="works/tabi.html" class="btn en">View More</a>
+  </div>
+  </div>
+
+  <div class="work-item">
+   <img src="images/banner.avif" alt="バナー">
+   <div class="work-text">
+   <h4>バナー</h4>
+   <p class="en">Illustrator / Photoshop</p>
+   <a href="works/banner.html" class="btn en">View More</a>
+  </div>
+  </div>
+
+ 
+</section>
+
+  <footer>
+    <nav>
+      <a href="top" class="en">Top</a>
+      <a href="#about" class="en">About</a>
+      <a href="works" class="en">Works</a>
+      <a href="#contact" class="en">Contact</a>
+    </nav>
+    <p class="en">©Yuri Kubota</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("fade-in");
+
+    const links = document.querySelectorAll("a:not([target='_blank'])");
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        const href = link.getAttribute("href");
+
+        if (!href || href.startsWith("#") || href.startsWith("javascript")) return;
+
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location = href;
+        }, 400);
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,893 @@
+/* リセット（ブラウザごとの差をなくす） */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ベース設定 */
+/* 初期状態 */
+body.fade {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+/* ページ読み込み時にフェードイン */
+body.fade.fade-in {
+  opacity: 1;
+}
+
+/* ページ遷移時にフェードアウト */
+body.fade.fade-out {
+  opacity: 0;
+}
+
+body {
+  font-family: "游ゴシック体", Yugothic, sans-serif;
+  color: #3d3d3d;
+  line-height: 1.8;
+  background-color: white;
+}
+
+.en {
+  font-family:"Lato Hairline", "Lato", sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* タイトル初期状態：透明・下に少しズレている */
+.title {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+  margin-bottom: 5px;
+}
+
+/* タイトル表示状態 */
+.title.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.underline {
+  position: absolute;
+  height: 1px;
+  background-color: #3d3d3d; 
+  width: 0;
+  margin-top: -20px;
+  left: 0;
+  transform-origin: center;
+  transition: width 1s ease;
+}
+
+/* ヘッダー */
+header {
+  background-color: white;
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 a{
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #3d3d3d;
+  padding-left: 160px;
+}
+
+header h1 a:hover{
+  color: #c93a85;
+}
+
+header nav {
+  margin-right: 140px; /* ← 右側の余白を少し削る */
+}
+
+header nav a {
+  margin-left: 30px;
+  margin: 15px;
+  text-decoration: none;
+  color: #3d3d3d;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #c93a85;
+}
+#main-visual {
+  position: relative;
+  height: 650px;
+  background-color: #688982; /* グリーン背景 */
+  text-align: center;
+  overflow: hidden;
+}
+
+.main-text {
+  position: relative;
+  margin-top: 250px;
+  font-size: 3.8rem;
+  font-weight: 100;
+  color: #fff;
+  text-align: left; /* ← 左寄せ */
+  padding-left: 200px; /* ← 左に少し余白を作る */
+  line-height: 1;
+
+    /* ← アニメーション初期状態 */
+  opacity: 0;
+  transform: translateX(-50px); /* ← 左に少しずらしておく */
+  transition: all 1.2s ease;   /* ← フェードインの時間と動き */
+}
+
+.main-text.show {
+  opacity: 1;
+  transform: translateX(0); /* ← 左から元の位置へ */
+}
+
+.main-text .highlight{
+  color: #f1afb9;
+}
+
+.main-text .small{
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-top: -20px; 
+}
+
+/* 太陽 */
+.sun {
+  position: absolute;
+  top: -80px;  /* 上から落ちる初期位置 */
+  left: 80%;   /* 横中央 */
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background-color: #f1afb9; /* 太陽の黄色 */
+  border-radius: 50%;
+  animation: drop-sun 2s ease forwards;
+}
+
+/* 太陽の落下アニメーション */
+@keyframes drop-sun {
+  0% {
+    top: -200px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: -30px; /* 最終位置 */
+  }
+}
+/* トップメッセージ */
+#chach {
+  text-align: left;
+  padding: 100px 200px;
+}
+
+#chach h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#chach h1 .highlight{
+  color: #f1afb9;
+}
+
+#chach p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 2;
+}
+
+/* 表示時に左右へ広がる */
+#chach .underline.show {
+  width: 78%; /* 好きな長さに調整可能 */
+}
+
+/* Aboutセクション */
+#about {
+  text-align: left;
+  padding: 100px 200px;
+}
+
+#about h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#about h1 .highlight{
+  color: #ff9351;
+}
+
+#about img {
+  width: 500px;
+  margin: 20px 0;
+}
+
+/* about セクション内の写真と文章を横並び */
+.about-content {
+  display: flex;
+  align-items: flex-start; /* 上揃え */
+  gap: 40px; /* 写真と文章の間隔 */
+  flex-wrap: wrap; /* 小さい画面で縦に並ぶ */
+}
+
+/* 文章部分 */
+.about-text {
+  flex: 1; /* 残りの幅を文章が使う */
+  min-width: 200px; /* 小さい画面でもある程度の幅を確保 */
+  padding-top: 15px;
+}
+
+#about p {
+  max-width: 600px;
+  margin: 10px auto;
+  padding-top: 10px;
+}
+
+#about p.en{
+    font-size: 1.8rem;
+}
+
+#about .underline.show {
+  width: 25%; /* 好きな長さに調整可能 */
+}
+
+#about a.btn {
+  display: block;      /* ブロック化 */
+  width: max-content;  /* ボタンの幅だけに */
+  margin: 20px auto 0; /* 上20px、左右自動、下0 */
+}
+
+/* Worksセクション */
+#works {
+  text-align: left;
+  padding: 100px 200px;
+}
+
+#works h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#works h1 .highlight{
+  color: #74c6d8;
+}
+
+#works img {
+  width: 450px;
+  height: 300px;
+  margin: 35px;
+  transition: transform 0.3s;
+}
+
+#works a {
+  display: inline-block;
+  position: relative; /* 疑似要素の基準 */
+  overflow: hidden;   /* オーバーレイがはみ出さないように */
+}
+
+#works a img {
+  display: block;
+  width: 450px;
+  height: 300px;
+  transition: transform 0.3s;
+}
+
+/* 拡大 */
+#works a:hover img {
+  transform: scale(1.05);
+}
+
+/* オーバーレイ */
+#works a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+ width: 100%;
+  height: 100%; 
+  background-color: rgba(173, 216, 230, 0); /* 初期は透明 */
+  transition: background-color 0.3s;
+  pointer-events: none; /* クリックを邪魔しない */
+}
+
+#works a:hover::after {
+  background-color: rgba(173, 216, 230, 0.3); /* 薄い水色オーバーレイ */
+}
+
+#works .underline.show {
+  width: 25%; /* 好きな長さに調整可能 */
+}
+
+#works a.btn {
+  display: block;      /* ブロック化 */
+  width: max-content;  /* ボタンの幅だけに */
+  margin: 20px auto 0; /* 上20px、左右自動、下0 */
+}
+
+/* Contactセクション */
+#contact {
+  text-align: left;
+  padding: 100px 200px;
+}
+
+#contact h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#contact h1 .highlight{
+    color: #cb3dd6;
+}
+
+#contact h2 {
+    padding-bottom: 20px;
+}
+
+#contact h4{
+    font-size: 0.8rem;
+}
+
+#contact .underline.show {
+  width: 28%; /* 好きな長さに調整可能 */
+}
+
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  margin: 10px;
+}
+
+input, textarea {
+  width: 1000px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #3d3d3d;
+}
+
+textarea{
+    height: 100px;
+}
+
+input[type="submit"] {
+  width: 200px;  
+  display: block;  
+  margin: 20px auto 0;
+  margin-left: 390px;
+  background-color: white;
+  color: #3d3d3d;
+  border-radius: 30px;
+  border: 1px solid #3d3d3d;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: #688982;
+  color: white;
+  border: none;
+}
+
+/* ボタン共通スタイル */
+.btn {
+  display: inline-block;
+  padding: 5px 50px;
+  background-color: white;
+  color: #3d3d3d;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 20px;
+  border: 1px solid #3d3d3d;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #688982;
+  color: white;
+  border: none;
+}
+
+/* フッター */
+footer {
+  color: #3d3d3d;
+  text-align: left;
+  padding: 50px 20px;
+}
+
+footer nav a {
+  color: #3d3d3d;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500px;
+}
+
+footer nav {
+  margin-left: 160px; /
+}
+
+footer nav a:hover {
+  color: #c93a85;
+}
+
+footer p {
+    font-size: 0.7rem;
+    text-align: right;
+    margin-right: 300px;
+
+}
+
+/* Plofole */
+#about .highlight2{
+    color: #cb3dd6;
+}
+
+/* Skills */
+#skills {
+  text-align: left;
+  padding: 100px 200px;
+}
+
+#skills h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#skills h1 .highlight{
+  color: #74c6d8;
+}
+
+#skills p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 2;
+}
+
+/* 表示時に左右へ広がる */
+#skills .underline.show {
+  width: 23%; /* 好きな長さに調整可能 */
+}
+
+/* Strength */
+#strength {
+  text-align: left;
+  padding: 100px 200px;
+}
+
+#strength h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#strength h1 .highlight{
+  color: #ff9351;
+}
+
+#strength p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 2;
+  text-align: left;
+}
+
+/* 表示時に左右へ広がる */
+#strength .underline.show {
+  width: 29%; /* 好きな長さに調整可能 */
+}
+
+#strength h4 {
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+  padding-top: 30px;
+}
+
+#strength img {
+  width: 90px;
+  margin: 20px 0;
+}
+
+/* コンテナ（全体を横並びに） */
+.strengths-container {
+  display: flex;
+  justify-content: space-between; /* 均等配置 */
+  align-items: flex-start;
+  gap: 140px; /* 各ブロックの間隔 */
+  padding: 60px 200px;
+  margin-left: -200px;
+}
+
+/* 各ブロック */
+.strength {
+  flex: 1; /* 均等に幅を分け合う */
+  min-width: 250px; /* 小さすぎないように制限 */
+  text-align: center;
+}
+
+/* Hobby */
+#hobby {
+  text-align: left;
+  padding: 100px 200px;
+}
+
+#hobby h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#hobby h1 .highlight{
+  color: #ff9351;
+}
+
+#hobby p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 2;
+  padding-bottom: 10px;
+}
+
+#hobby h4 {
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+  padding-top: 30px;
+}
+
+/* 表示時に左右へ広がる */
+#hobby .underline.show {
+  width: 25%; /* 好きな長さに調整可能 */
+}
+
+/* Worksセクション全体 */
+.works {
+  display: flex;
+  flex-direction: column; /* ← 各作品を縦に積む */
+  gap: 80px; /* 各作品間の余白 */
+}
+
+/* 各作品ブロック */
+.work-item {
+  display: flex;            /* ← 中身を横並びにする！ */
+  align-items: center;      /* ← 画像とテキストを縦方向に中央揃え */
+  gap: 100px;                /* ← 画像と文字の間のスペース */
+  margin-left: 100px; 
+}
+
+/* 画像設定 */
+.work-item img {
+  width: 400px;             /* サイズ調整OK */
+  height: auto;
+}
+
+/* テキスト部分 */
+.work-text {
+  flex: 1;                  /* ← 横幅を自然に調整 */
+  text-align: left;         /* ← 左揃えにする */
+}
+
+.work-text h4 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.work-text p {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* ボタン */
+.work-text .btn {
+  display: inline-block !important;  /* ← ブロックではなくインラインに */
+  margin: 10px 0 0 0;     /* ← 上に余白だけつける。autoを消す！ */
+  padding: 5px 40px;
+  background-color: white;
+  border: 1px solid #3d3d3d;
+  border-radius: 30px;
+  color: #3d3d3d;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.work-text .btn:hover {
+  background-color: #688982;
+  color: white;
+  border: none;
+}
+
+/* meishi */
+#meishi img {
+  width: 600px;   /* ← 好きなサイズに調整 */
+  height: auto;   /* ← 比率を維持して拡大縮小 */
+  display: block; /* ← 下の余白などを安定させる */
+  margin: 40px auto; /* ← 中央に配置 */
+}
+
+#meishi {
+  text-align: left;
+  padding: 100px 300px;
+}
+
+#meishi h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#meishi h1 .highlight{
+  color: #f1afb9;
+}
+
+#meishi p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 2;
+  padding-bottom: 30px;
+}
+
+#meishi h4 {
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+  padding-top: 30px;
+}
+
+/* 表示時に左右へ広がる */
+#meishi .underline.show {
+  width: 38%; /* 好きな長さに調整可能 */
+}
+
+/* Komorebi */
+
+#komorebi img {
+  width: 600px;   /* ← 好きなサイズに調整 */
+  height: auto;   /* ← 比率を維持して拡大縮小 */
+  display: block; /* ← 下の余白などを安定させる */
+  margin: 40px auto; /* ← 中央に配置 */
+}
+
+#komorebi {
+  text-align: left;
+  padding: 100px 300px;
+}
+
+#komorebi h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#komorebi h1 .highlight{
+  color: #74c6d8;
+}
+
+#komorebi p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 2;
+  padding-bottom: 30px;
+}
+
+#komorebi h4 {
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+  padding-top: 30px;
+}
+
+/* 表示時に左右へ広がる */
+#komorebi .underline.show {
+  width: 25%; /* 好きな長さに調整可能 */
+}
+
+#komorebi .btn {
+  display: inline-block;         /* 中央寄せが効くようにする */
+  position: relative;
+  left: 50%;                     /* 画面（または親の幅）の50%の位置へ */
+  transform: translateX(-50%);   /* 自分の幅の半分だけ戻す＝中央寄せ */
+  margin: 30px 0;                /* 上下に余白を追加 */
+  padding: 8px 50px;
+  background-color: white;
+  color: #3d3d3d;
+  border: 1px solid #3d3d3d;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+#komorebi .btn:hover {
+  background-color: #688982;
+  color: white;
+  border: none;
+}
+
+/* Natural Glow */
+
+#natural img {
+  width: 600px;   /* ← 好きなサイズに調整 */
+  height: auto;   /* ← 比率を維持して拡大縮小 */
+  display: block; /* ← 下の余白などを安定させる */
+  margin: 40px auto; /* ← 中央に配置 */
+}
+
+#natural {
+  text-align: left;
+  padding: 100px 300px;
+}
+
+#natural h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#natural h1 .highlight{
+  color: #ff9351;
+}
+
+#natural p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 2;
+  padding-bottom: 30px;
+}
+
+#natural h4 {
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+  padding-top: 30px;
+}
+
+/* 表示時に左右へ広がる */
+#natural .underline.show {
+  width: 25%; /* 好きな長さに調整可能 */
+}
+
+#natural .btn {
+  display: inline-block;         /* 中央寄せが効くようにする */
+  position: relative;
+  left: 50%;                     /* 画面（または親の幅）の50%の位置へ */
+  transform: translateX(-50%);   /* 自分の幅の半分だけ戻す＝中央寄せ */
+  margin: 30px 0;                /* 上下に余白を追加 */
+  padding: 8px 50px;
+  background-color: white;
+  color: #3d3d3d;
+  border: 1px solid #3d3d3d;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+#natural .btn:hover {
+  background-color: #688982;
+  color: white;
+  border: none;
+}
+
+/* 旅のしおり */
+
+#tabi img {
+  width: 600px;   /* ← 好きなサイズに調整 */
+  height: auto;   /* ← 比率を維持して拡大縮小 */
+  display: block; /* ← 下の余白などを安定させる */
+  margin: 40px auto; /* ← 中央に配置 */
+}
+
+#tabi {
+  text-align: left;
+  padding: 100px 300px;
+}
+
+#tabi h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#tabi h1 .highlight{
+  color: #e15e73;
+}
+
+#tabi p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 2;
+  padding-bottom: 30px;
+  padding-left: 120px;
+}
+
+#tabi h4 {
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+  padding-top: 30px;
+  padding-left: 120px;
+}
+
+/* 表示時に左右へ広がる */
+#tabi .underline.show {
+  width: 38%; /* 好きな長さに調整可能 */
+}
+
+#tabi .btn {
+  display: inline-block;         /* 中央寄せが効くようにする */
+  position: relative;
+  left: 50%;                     /* 画面（または親の幅）の50%の位置へ */
+  transform: translateX(-50%);   /* 自分の幅の半分だけ戻す＝中央寄せ */
+  margin: 30px 0;                /* 上下に余白を追加 */
+  padding: 8px 50px;
+  background-color: white;
+  color: #3d3d3d;
+  border: 1px solid #3d3d3d;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+#tabi .btn:hover {
+  background-color: #688982;
+  color: white;
+  border: none;
+}
+
+/* バナー */
+
+#banner img {
+  width: 600px;   /* ← 好きなサイズに調整 */
+  height: auto;   /* ← 比率を維持して拡大縮小 */
+  display: block; /* ← 下の余白などを安定させる */
+  margin: 40px auto; /* ← 中央に配置 */
+}
+
+#banner {
+  text-align: left;
+  padding: 100px 300px;
+}
+
+#banner h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#banner h1 .highlight{
+  color: #e15e73;
+}
+
+#banner p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 2;
+  padding-bottom: 30px;
+  padding-left: 120px;
+}
+
+#banner h4 {
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+  padding-top: 30px;
+  padding-left: 120px;
+}
+
+/* 表示時に左右へ広がる */
+#banner .underline.show {
+  width: 32%; /* 好きな長さに調整可能 */
+}
+
+#banner .btn {
+  display: inline-block;         /* 中央寄せが効くようにする */
+  position: relative;
+  left: 50%;                     /* 画面（または親の幅）の50%の位置へ */
+  transform: translateX(-50%);   /* 自分の幅の半分だけ戻す＝中央寄せ */
+  margin: 30px 0;                /* 上下に余白を追加 */
+  padding: 8px 50px;
+  background-color: white;
+  color: #3d3d3d;
+  border: 1px solid #3d3d3d;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+#banner .btn:hover {
+  background-color: #688982;
+  color: white;
+  border: none;
+}
