@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuri Kubota | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="fade">
+  <header>
+    <h1><a href="../index.html" class="en">Yuri Kubota</a></h1>
+    <nav>
+      <a href="../index.html" class="en">Top</a>
+      <a href="../about.html" class="en">About</a>
+      <a href="../works.html" class="en">Works</a>
+      <a href="../index.html#contact" class="en">Contact</a>
+    </nav>
+  </header>
+<section id="meishi">
+  <div class="title-wrapper">
+    <h1 class="title">自分の<span class="highlight">名</span>刺</h1>
+    <div class="underline"></div>
+  </div>
+  <div>
+   <img src="../images/meishi.jpg" alt="自分の名刺">
+   <h4>概要</h4>
+   <p>WEBCOACHの課題で作成した名刺です。カラーは自分のイメージカラーとして使っているグリーンとピンクの組<br>
+    み合わせで作成しました。モチーフは太陽です。
+    </p>
+    <h4>目的</h4>
+   <p>WEBデザイナー用の名刺。<br>
+    必要な情報をなるべくシンプルに読みやすく、そして人柄のイメージが湧くように心がけました。
+    </p>
+    <h4>使用ツール</h4>
+   <p class="en">Canva</p>
+  </div>
+  </div>
+
+</section>
+
+  <footer>
+    <nav>
+      <a href="top" class="en">Top</a>
+      <a href="#about" class="en">About</a>
+      <a href="works" class="en">Works</a>
+      <a href="#contact" class="en">Contact</a>
+    </nav>
+    <p class="en">©Yuri Kubota</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("fade-in");
+
+    const links = document.querySelectorAll("a:not([target='_blank'])");
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        const href = link.getAttribute("href");
+
+        if (!href || href.startsWith("#") || href.startsWith("javascript")) return;
+
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location = href;
+        }, 400);
+      });
+    });
+  });
+</script>
+</body>
+</html>
