@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuri Kubota | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="fade">
+  <header>
+    <h1><a href="index.html" class="en">Yuri Kubota</a></h1>
+    <nav>
+      <a href="index.html" class="en">Top</a>
+      <a href="about.html" class="en">About</a>
+      <a href="works.html" class="en">Works</a>
+      <a href="#contact" class="en">Contact</a>
+    </nav>
+  </header>
+<section id="main-visual">
+  <!-- メインテキスト -->
+  <div class="main-text en">
+    <p><span class="highlight">Y</span>URI<br>
+    KUBOTA<br>
+    <span class="small">Portfolio</span></p>
+  </div>
+
+  <!-- 太陽 -->
+  <div class="sun"></div>
+</section>
+<section id="chach">
+  <div class="title-wrapper">
+    <h1 class="title"><span class="highlight">伝</span>えるだけじゃなく、心に届くデザインを。</h1>
+    <div class="underline"></div>
+  </div>
+  <p>
+    「誰に何を届けたいのか？」という視点を大切にした、目的に寄り添うデザインを心がけています。<br>
+    「伝わればいい」ではなく、「心に残る」「動きたくなる」そんな温度のあるデザインを、丁寧に作り上げていきたいと思っています。
+  </p>
+</section>
+
+<section id="about">
+  <div class="title-wrapper">
+    <h1 class="title"><span class="en">Ab<span class="highlight">o</span>ut</span></h1>
+    <div class="underline"></div>
+  </div>
+  <div class="about-content">
+  <img src="images/monokuro_profile.avif" alt="プロフィール写真">
+  <div class="about-text">
+  <p class="en">Yuri Kubota</p>
+  <p>
+    都内在住。<br><br>
+    バナー制作やLP制作を中心に活動しています。<br>
+    以前はITスタートアップで広報やマーケティングに関わっており、<br>
+    「誰に何を届けたいのか？」という視点を大切にした、目的に寄り添うデザインを心がけています。<br><br>
+    現在は心理学を学びながら、デザインを通じて<br>
+    “人の心に届く表現”を探求中です。
+  </p>
+   </div>
+  </div>
+  <a href="about.html" class="btn en">View More</a>
+</section>
+
+<section id="works">
+  <div class="title-wrapper">
+    <h1 class="title"><span class="en">W<span class="highlight">o</span>rks</h1></span>
+    <div class="underline"></div>
+  </div>
+  <div class="works-gallery">
+  <a href="works/meishi.html">
+    <img src="images/meishi.jpg" alt="自分の名刺">
+  </a>
+  <a href="works/komorebi.html">
+    <img src="images/Komorebi.avif" alt="Komorebi">
+  </a>
+  <a href="works/natural.html">
+    <img src="images/Natural Grlow.avif" alt="Natural Glow">
+  </a>
+  <a href="works/tabi.html">
+    <img src="images/tabi.avif" alt="旅のしおり">
+  </a>
+</div>
+  <a href="works.html" class="btn en">View More</a>
+</section>
+
+<section id="contact">
+  <div class="title-wrapper">
+    <h1 class="title"><span class="en">Conta<span class="highlight">c</span>t</span></h1>
+    <div class="underline"></div>
+  </div>
+  <form action="#">
+    <h2>お気軽にお問い合わせください！</h2>
+    <h4>お名前*</h4>
+    <input type="text" name="name">
+    <h4>メールアドレス*</h4>
+    <input type="email" name="email">
+    <h4>お問い合わせ内容*</h4>
+    <textarea name="comment" cols="50" maxlength="300"></textarea><br>
+    <input type="submit" value="送信">
+  </form>
+</section>
+  <footer>
+    <nav>
+      <a href="top" class="en">Top</a>
+      <a href="#about" class="en">About</a>
+      <a href="works" class="en">Works</a>
+      <a href="#contact" class="en">Contact</a>
+    </nav>
+    <p class="en">©Yuri Kubota</p>
+  </footer>
+
+  <script src="js/script.js?v=2"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("fade-in");
+
+    const links = document.querySelectorAll("a:not([target='_blank'])");
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        const href = link.getAttribute("href");
+
+        if (!href || href.startsWith("#") || href.startsWith("javascript")) return;
+
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location = href;
+        }, 250);
+      });
+    });
+  });
+</script>
+</body>
+</html>
